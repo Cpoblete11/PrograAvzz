@@ -1,0 +1,13 @@
+﻿@{
+    int id = int.Parse(ViewData["id"].ToString());
+    string nombre = ViewData["nombre"].ToString();
+    string apellido = ViewData["apellido"].ToString();
+}
+
+
+<form method="post" action="../RoleViews/Modificar">
+    <input type="number" value="@id" name="id" hidden/>
+    <input type="text" value="@nombre" placeholder="Nombre" name="nombre"/>
+    <input type="text" value="@apellido" placeholder="Apellido" name="apellido"/>
+    <button type="submit">editar</button>
+</form>

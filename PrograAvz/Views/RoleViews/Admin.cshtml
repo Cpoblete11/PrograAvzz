@@ -1,0 +1,59 @@
+﻿@using Persona = form.Models.DTO.Persona;
+@using Direccion = form.Models.DTO.Direccion;
+@model List<Persona>
+@{
+    ViewData["Title"] = "RoleViews Page";
+}
+
+   <form action="../RoleViews/Admin" method="POST" class="formulario">
+  <div class="form-outline mb-4">
+    <input type="text" name="nombre" id="nombre" class="form-control" />
+    <label class="form-label" for="nombre">Nombre</label>
+  </div>
+
+  <div class="form-outline mb-4">
+    <input type="text" id="apellido" name="apellido" class="form-control" />
+    <label class="form-label" for="apellido">Apellido</label>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+</form>
+<br /><br />
+<div class="container">
+    <div class="row">
+        @foreach(Persona persona in Model)
+        {
+          <div class="col-xl-4 col-lg-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  <img
+                    src="https://i.giphy.com/media/gJuTwM3yuQ8f3rE8KV/giphy.webp"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                  />
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1">@persona.nombre @persona.apellido</p>
+                 
+                    <div class="buttons">
+                        <form action="../RoleViews/Admin" method="get">
+                            <input type="hidden" value="@persona.Id" name="id">
+                            <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <form action="../RoleViews/Editar" method="get">
+                            <input type="hidden" value="@persona.Id" name="id">
+                            <input type="hidden" value="@persona.nombre" name="nombre">
+                            <input type="hidden" value="@persona.apellido" name="apellido">
+                            <button type="submit"><i class="fa-solid fa-pencil"></i></button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+    </div>
+</div>
